@@ -73,34 +73,38 @@ a {
 
 #qlock5,
 #qlock5 * {
-		 -moz-transition: background 15s, color 15s;
-	-webkit-transition: background 15s, color 15s;
-					transition: background 15s, color 15s;
+		 -moz-transition: background 15s;
+	-webkit-transition: background 15s;
+					transition: background 15s;
 }
 
 #qlock5 div {
 	padding: 2em;
-	background-image: -webkit-gradient(
-		    linear,
-		    left top,
-		    right bottom,
-		    color-stop(0.6, rgba(255,255,255,0)),
-		    color-stop(0.601, rgba(255,255,255,0.05))
-	),
-			-webkit-gradient(
-			    linear,
-			    left top,
-			    left bottom,
-			    color-stop(0, rgba(0,0,0,0.2)),
-			    color-stop(0.3, rgba(0,0,0,0))
-	),
-			-webkit-gradient(
-			    linear,
-			    left top,
-			    right top,
-			    color-stop(0.7, rgba(0,0,0,0)),
-			    color-stop(1, rgba(0,0,0,0.2))
-	);
+	background-image: 
+		/* diagonal gradient */
+		-webkit-gradient(
+			linear,
+			left top,
+			right bottom,
+			color-stop(0.6, rgba(255,255,255,0)),
+			color-stop(0.601, rgba(255,255,255,0.05))
+		),
+		/* top inner shadow */
+		-webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0, rgba(0,0,0,0.1)),
+			color-stop(0.35, rgba(0,0,0,0))
+		),
+		/* right inner shadow */
+		-webkit-gradient(
+			linear,
+			left top,
+			right top,
+			color-stop(0.65, rgba(0,0,0,0)),
+			color-stop(1, rgba(0,0,0,0.1))
+		);
 	background-image: -moz-linear-gradient(
 	    left top,
 	    rgba(255,255,255,0) 60%,
