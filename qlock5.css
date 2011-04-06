@@ -41,16 +41,17 @@ body {
 footer {
 	display: block;
 	color: #999;
+	font-size: 14px;
 	text-align: center;
+}
+
+footer span {
+/*	white-space: nowrap;*/
 }
 
 a {
 	color: #666;
 	text-decoration: none;
-}
-
-footer span {
-	white-space: nowrap;
 }
 
 /*	DA CLOCK	*/
@@ -64,30 +65,41 @@ footer span {
 	letter-spacing: 0.3em;
 	line-height: 1em;
 	font-size: 3em;
-	-moz-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4),
-		inset -20px 20px 80px rgba(0,0,0,0.1);
-	-o-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4),
-		inset -20px 20px 80px rgba(0,0,0,0.1);
-	-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4),
-		inset -20px 20px 80px rgba(0,0,0,0.1);
-	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4),
-		inset -20px 20px 80px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 }
 
+#qlock5,
 #qlock5 * {
-		 -moz-transition: all 1s;
-	-webkit-transition: all 1s;
-					transition: all 1s;
+		 -moz-transition: background 15s, color 15s;
+	-webkit-transition: background 15s, color 15s;
+					transition: background 15s, color 15s;
 }
 
 #qlock5 div {
 	padding: 2em;
 	background-image: -webkit-gradient(
-	    linear,
-	    left top,
-	    right bottom,
-	    color-stop(0.6, rgba(255,255,255,0)),
-	    color-stop(0.601, rgba(255,255,255,0.05))
+		    linear,
+		    left top,
+		    right bottom,
+		    color-stop(0.6, rgba(255,255,255,0)),
+		    color-stop(0.601, rgba(255,255,255,0.05))
+	),
+			-webkit-gradient(
+			    linear,
+			    left top,
+			    left bottom,
+			    color-stop(0, rgba(0,0,0,0.2)),
+			    color-stop(0.3, rgba(0,0,0,0))
+	),
+			-webkit-gradient(
+			    linear,
+			    left top,
+			    right top,
+			    color-stop(0.7, rgba(0,0,0,0)),
+			    color-stop(1, rgba(0,0,0,0.2))
 	);
 	background-image: -moz-linear-gradient(
 	    left top,
