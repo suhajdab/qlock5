@@ -22,15 +22,25 @@ body {
 	background: #fff;
 	font-family: 'NotCourierSansRegular';
 	
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-box-pack: center;
-	-webkit-box-align: center;
+	display: -ms-box;
+	-ms-box-orient: vertical;
+	-ms-box-pack: center;
+	-ms-box-align: center;
 
 	display: -moz-box;
 	-moz-box-orient: vertical;
 	-moz-box-pack: center;
 	-moz-box-align: center;
+
+	display: -o-box;
+	-o-box-orient: vertical;
+	-o-box-pack: center;
+	-o-box-align: center;
+
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
 
 	display: box;
 	box-orient: vertical;
@@ -65,6 +75,7 @@ a {
 	letter-spacing: 0.3em;
 	line-height: 1em;
 	font-size: 3em;
+	-ms-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 	-o-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
@@ -73,13 +84,17 @@ a {
 
 #qlock5,
 #qlock5 * {
-		 -moz-transition: background 15s;
+	    -ms-transition: background 15s;
+	   -moz-transition: background 15s;
+	     -o-transition: background 15s;
 	-webkit-transition: background 15s;
-					transition: background 15s;
+			transition: background 15s;
 }
 
+/*	somewhat overwhelming gradients i'd say */
 #qlock5 div {
 	padding: 2em;
+	/* old WEBKIT gradient syntax */
 	background-image: 
 		/* diagonal gradient */
 		-webkit-gradient(
@@ -95,20 +110,120 @@ a {
 			left top,
 			left bottom,
 			color-stop(0, rgba(0,0,0,0.1)),
-			color-stop(0.35, rgba(0,0,0,0))
+			color-stop(0.35, transparent)
 		),
 		/* right inner shadow */
 		-webkit-gradient(
 			linear,
 			left top,
 			right top,
-			color-stop(0.65, rgba(0,0,0,0)),
+			color-stop(0.65, transparent),
 			color-stop(1, rgba(0,0,0,0.1))
-		);
-	background-image: -moz-linear-gradient(
-	    left top,
-	    rgba(255,255,255,0) 60%,
-	    rgba(255,255,255,0.05) 60.1%
+	);
+	
+	/* new w3c WEBKIT gradient syntax */
+	background-image: 
+		/* diagonal gradient */
+		-webkit-linear-gradient(
+			left top,
+			rgba(255,255,255,0) 60%,
+			rgba(255,255,255,0.05) 60.1%
+		),
+		/* top inner shadow */
+		-webkit-linear-gradient(
+			top,
+			rgba(0,0,0,0.1) 0%,
+			transparent 35%
+		),
+		/* right inner shadow */
+		-webkit-linear-gradient(
+			left,
+			transparent 65%,
+			rgba(0,0,0,0.1) 100%
+	);
+	
+	/* MOZ */
+	background-image: 
+		/* diagonal gradient */
+		-moz-linear-gradient(
+			left top,
+			rgba(255,255,255,0) 60%,
+			rgba(255,255,255,0.05) 60.1%
+		)	,
+		/* top inner shadow */
+		-moz-linear-gradient(
+			top,
+			rgba(0,0,0,0.1) 0%,
+			transparent 35%
+		),
+		/* right inner shadow */
+		-moz-linear-gradient(
+			left,
+			transparent 65%,
+			rgba(0,0,0,0.1) 100%
+	);
+	
+	/* O */
+	background-image: 
+		/* diagonal gradient */
+		-o-linear-gradient(
+			left top,
+			rgba(255,255,255,0) 60%,
+			rgba(255,255,255,0.05) 60.1%
+		)	,
+		/* top inner shadow */
+		-o-linear-gradient(
+			top,
+			rgba(0,0,0,0.1) 0%,
+			transparent 35%
+		),
+		/* right inner shadow */
+		-o-linear-gradient(
+			left,
+			transparent 65%,
+			rgba(0,0,0,0.1) 100%
+	);
+	
+	/* MS - IE10 */
+	background-image: 
+		/* diagonal gradient */
+		-ms-linear-gradient(
+			left top,
+			rgba(255,255,255,0) 60%,
+			rgba(255,255,255,0.05) 60.1%
+		)	,
+		/* top inner shadow */
+		-ms-linear-gradient(
+			top,
+			rgba(0,0,0,0.1) 0%,
+			transparent 35%
+		),
+		/* right inner shadow */
+		-ms-linear-gradient(
+			left,
+			transparent 65%,
+			rgba(0,0,0,0.1) 100%
+	);
+	
+	/* future */
+	background-image: 
+		/* diagonal gradient */
+		linear-gradient(
+			left top,
+			rgba(255,255,255,0) 60%,
+			rgba(255,255,255,0.05) 60.1%
+		)	,
+		/* top inner shadow */
+		linear-gradient(
+			top,
+			rgba(0,0,0,0.1) 0%,
+			transparent 35%
+		),
+		/* right inner shadow */
+		linear-gradient(
+			left,
+			transparent 65%,
+			rgba(0,0,0,0.1) 100%
 	);
 }
 
