@@ -10,6 +10,13 @@ var qlock5 = ( function ( doc ) {
     }, toFullMin );
     
     refresh();
+    hash2Class();
+    window.addEventListener( 'hashchange', hash2Class, false );
+  }
+
+  //  allow users to simply set classes for custom settings by changing #hashes
+  function hash2Class () {
+    document.body.className = location.hash.replace( '#', '' ).replace( ',', ' ' );
   }
   
   function refresh () {
@@ -46,7 +53,7 @@ var qlock5 = ( function ( doc ) {
 
     
     h = h > 12 ? h - 12 : ( h || 12 );
-    show( 'it is h' + h );
+    show( 'h' + h );
     doc.getElementById( 'qlock5' ).className = 'h' + h;
   }
   
@@ -64,8 +71,8 @@ var qlock5 = ( function ( doc ) {
   }
   
   function isEarthHour ( d ) {
-    var start = new Date('Sat Mar 26 2011 20:30:00'),
-      end = new Date('Sat Mar 26 2011 21:30:00');
+    var start = new Date('Sat Mar 30 2013 20:30:00'),
+      end = new Date('Sat Mar 30 2013 21:30:00');
       
     if ( d > start && d < end ) {
       document.title = 'off for Earth Hour';

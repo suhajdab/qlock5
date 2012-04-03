@@ -1,1 +1,13 @@
 An html remake of the most awesome clock I've ever seen: qlocktwo ( http://www.qlocktwo.com ). Original design by Biegert & Funk.
+
+2012-04-03
+Added simple customization for users. Simply add an #option to change default behaviour.
+
+Supported hashtags:
+#nofooter - hides footer ( great when using qlock5 as a screensaver )
+#black-ice-tea, #cherry-cake, #frozen-blackberry, #lime-juice - set a fixed theme ( disables hourly change )
+
+One can also combine a theme with nofooter, by comma seperating tags.
+Ex: 
+ http://qlock5.nu/#nofooter,cherry-cake 
+ will give you the red theme and hide the footer
