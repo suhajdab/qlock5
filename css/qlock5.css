@@ -82,8 +82,8 @@ a {
 	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 }
 
-#qlock5,
-#qlock5 * {
+#qlock5.ready,
+#qlock5.ready * {
 	    -ms-transition: background 15s;
 	   -moz-transition: background 15s;
 	     -o-transition: background 15s;
@@ -225,6 +225,7 @@ a {
 			transparent 65%,
 			rgba(0,0,0,0.1) 100%
 	);
+	word-wrap: break-word;
 }
 
 #qlock5 .on,
