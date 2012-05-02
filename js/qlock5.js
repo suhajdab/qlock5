@@ -1,7 +1,17 @@
+/**
+	QLOCK5
+			An html remake of the most awesome clock I've ever seen: qlocktwo
+			Original design by Biegert & Funk
+			Remake by @suhajdab	at onereason
+
+	@author Balazs Suhajda @ onereason
+*/
+
 /*
 	TODO: option classes should be set on clock
 	TODO: ready state to allow transitions
 */
+
 
 var qlock5 = ( function ( doc ) {
 	'use strict'
@@ -21,6 +31,9 @@ var qlock5 = ( function ( doc ) {
 		container.className =+ ' ready';
 	}
 
+	/**
+	 * insert clock html into DOM
+	 */
 	function build() {
 		var panels = panelString.split( ' ' ),
 			wrapper = document.createElement( 'div' );
@@ -30,12 +43,19 @@ var qlock5 = ( function ( doc ) {
 		container.appendChild( wrapper );
 	}
 
+	/**
+	 * returns a single element, panel
+	 * @param  {string} str texContent and optionally id of element to be created
+	 * @return {string}     text or markup as clock building block
+	 */
 	function process( str ) {
 		var arr = str.split(':');
 		return arr[ 1 ] ? '<span id="' + arr[ 1 ] + '">' + arr[ 0 ] + '</span>' : arr[ 0 ];
 	}
 
-	//  allow users to simply set classes for custom settings by changing #hashes
+	/**
+	 * sets classes based on location.hash to allow users to customize default behavior
+	 */
 	function onHashChange () {
 		if ( location.hash ) {
 			var hash = location.hash.replace( '#', '' ).replace( ',', ' ' );
@@ -44,21 +64,34 @@ var qlock5 = ( function ( doc ) {
 		}
 	}
 
+	/**
+	 * calulates time until full minute on device's clock to make sure it's in sync
+	 * @return {number} ms milisec until full minute
+	 */
 	function msToFullMinute() {
 		var d = new Date(),
 			ms = 1000 - d.getMilliseconds() + ( 60 - d.getSeconds() ) * 1000;
 		return ms;
 	}
 
+	/**
+	 * set next refresh of clock to match device clock
+	 */
 	function waitTillFullMinute() {
 		setTimeout( startTicking, msToFullMinute() );
 	}
 
+	/**
+	 * start regular ticks
+	 */
 	function startTicking() {
 		refresh();
 		setInterval( refresh, 1000 * 60 );
 	}
 	
+	/**
+	 * refresh clock elements
+	 */
 	function refresh () {
 		var d = new Date(),
 			m = d.getMinutes(),
@@ -74,6 +107,10 @@ var qlock5 = ( function ( doc ) {
 		showHours( h, m );
 	}
 
+	/**
+	 * shows appropriate textual element(s) representing every 5th minute
+	 * @param  {number} m minutes of current time
+	 */
 	function showTextMinutes( m ) {
 		if ( m < 5 ) show( 'oclock' );
 		else if ( m < 10 || m > 54 ) show( 'm5' );
@@ -84,6 +121,10 @@ var qlock5 = ( function ( doc ) {
 		else show( 'm30' );
 	}
 
+	/**
+	 * shows dots representing 4 minutes between textual minute elements
+	 * @param  {[type]} m inutes of current time
+	 */
 	function showDotMinutes( m ) {
 		var r = m % 5;
 		if ( r >= 1 ) show( 'm1' );
@@ -92,6 +133,11 @@ var qlock5 = ( function ( doc ) {
 		if ( r >= 4 ) show( 'm4' );
 	}
 
+	/**
+	 * shows text elements representing the relations between hours and minutes
+	 * five past three / ten to twelve
+	 * @param  {number} m inutes of current time
+	 */
 	function showPastTo( m ) {
 			if ( m > 4 ) {
 			if ( m < 35 ) show( 'past' );
@@ -99,6 +145,11 @@ var qlock5 = ( function ( doc ) {
 		}
 	}
 
+	/**
+	 * shows text element representing current hour
+	 * @param  {number} h hours of current time
+	 * @param  {number} m minutes of current time
+	 */
 	function showHours( h, m ) {
 		if ( m > 34 ) h ++;    
 		h = h > 12 ? h - 12 : ( h || 12 );
@@ -106,12 +157,19 @@ var qlock5 = ( function ( doc ) {
 		container.className = 'h' + h;
 	}
 	
+	/**
+	 * sets .on class on elements to be shown
+	 * @param  {string} ids id of elements to be shown
+	 */
 	function show ( ids ) {
 		ids.split( ' ' ).forEach( function ( id ) {
 			doc.getElementById( id ).className = 'on';
 		});
 	}
 	
+	/**
+	 * clears clock by removing .on class from all elements
+	 */
 	function allOff () {
 		var els = doc.querySelectorAll( '.on' );
 		for ( var i = 0, l = els.length; i < l; i++ ) {
@@ -119,6 +177,11 @@ var qlock5 = ( function ( doc ) {
 		}
 	}
 	
+	/**
+	 * Checks if it is Earth Hour
+	 * @param  {date}  d current date
+	 * @return {Boolean}   is it earth hour?
+	 */
 	function isEarthHour ( d ) {
 		var start = new Date('Sat Mar 30 2013 20:30:00'),
 			end = new Date('Sat Mar 30 2013 21:30:00');
