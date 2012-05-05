@@ -28,7 +28,7 @@ var qlock5 = ( function ( doc ) {
 		refresh();
 		onHashChange();
 		window.addEventListener( 'hashchange', onHashChange, false );
-		container.className =+ ' ready';
+		container.dataset.state = 'ready';
 	}
 
 	/**
@@ -151,12 +151,22 @@ var qlock5 = ( function ( doc ) {
 	 * @param  {number} m minutes of current time
 	 */
 	function showHours( h, m ) {
+		container.dataset.hours = hours24to12( h );
+
 		if ( m > 34 ) h ++;    
-		h = h > 12 ? h - 12 : ( h || 12 );
+		h = hours24to12( h );
 		show( 'h' + h );
-		container.className = 'h' + h;
 	}
 	
+	/**
+	 * convert 0 - 23:59 time to 12:00 - 11:59
+	 * @param  {number} h hours
+	 * @return {number}   hours
+	 */
+	function hours24to12 ( h ) {
+		return h > 12 ? h - 12 : ( h || 12 );
+	}
+
 	/**
 	 * sets .on class on elements to be shown
 	 * @param  {string} ids id of elements to be shown

@@ -82,8 +82,8 @@ a {
 	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 }
 
-#qlock5.ready,
-#qlock5.ready * {
+#qlock5[data-state="ready"],
+#qlock5[data-state="ready"] * {
 	    -ms-transition: background 15s;
 	   -moz-transition: background 15s;
 	     -o-transition: background 15s;
@@ -275,34 +275,34 @@ body.nofooter footer {
 /*	THEMES	*/
 body.black-ice-tea #qlock5,
 #qlock5.black-ice-tea,
-#qlock5.h1,
-#qlock5.h5,
-#qlock5.h9 {
+#qlock5[data-hours="1"],
+#qlock5[data-hours="5"],
+#qlock5[data-hours="9"] {
 	background: #221f23;
 	color: rgba(0,0,0,1);
 }
 
 body.cherry-cake #qlock5,
 #qlock5.cherry-cake,
-#qlock5.h2,
-#qlock5.h6,
-#qlock5.h10 {
+#qlock5[data-hours="2"],
+#qlock5[data-hours="6"],
+#qlock5[data-hours="10"] {
 	background: #e00918;
 /*	color: #c3040c;*/
 }
 
 body.frozen-blackberry #qlock5,
 #qlock5.frozen-blackberry,
-#qlock5.h3,
-#qlock5.h7,
-#qlock5.h11 {
+#qlock5[data-hours="3"],
+#qlock5[data-hours="7"],
+#qlock5[data-hours="11"] {
 	background: #614d91;
 }
 
 body.lime-juice #qlock5,
 #qlock5.lime-juice,
-#qlock5.h4,
-#qlock5.h8,
-#qlock5.h12 {
+#qlock5[data-hours="4"],
+#qlock5[data-hours="8"],
+#qlock5[data-hours="12"] {
 	background: #a8ad13;
 }
