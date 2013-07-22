@@ -19,16 +19,16 @@ var qlock5 = ( function ( doc ) {
 	var time, container;
 
 	var panelString = 'IT:it L IS:is ASTIME A:a C QUARTER:m15 DC TWENTY:m20 FIVE:m5 X HALF:m30 B TEN:m10 F TO:to PAST:past ERU NINE:h9 ONE:h1 SIX:h6 THREE:h3 FOUR:h4 FIVE:h5 TWO:h2 EIGHT:h8 ELEVEN:h11 SEVEN:h7 TWELVE:h12 TEN:h10 SE OCLOCK:oclock &bull;:m1 &bull;:m2 &bull;:m3 &bull;:m4';
-	
+
 	function init () {
 		container = doc.getElementById( 'qlock5' ),
-		
+
 		build();
 		waitTillFullMinute();
 		refresh();
 		onHashChange();
 		window.addEventListener( 'hashchange', onHashChange, false );
-		container.dataset.state = 'ready';
+		container.setAttribute( 'data-state', 'ready' );
 	}
 
 	/**
@@ -60,7 +60,7 @@ var qlock5 = ( function ( doc ) {
 		if ( location.hash ) {
 			var hash = location.hash.replace( '#', '' ).replace( ',', ' ' );
 			document.body.className = hash;
-			_gaq && _gaq.push(['_trackEvent', 'Hash', hash]);  
+			_gaq && _gaq.push(['_trackEvent', 'Hash', hash]);
 		}
 	}
 
@@ -88,7 +88,7 @@ var qlock5 = ( function ( doc ) {
 		refresh();
 		setInterval( refresh, 1000 * 60 );
 	}
-	
+
 	/**
 	 * refresh clock elements
 	 */
@@ -96,13 +96,13 @@ var qlock5 = ( function ( doc ) {
 		var d = new Date(),
 			m = d.getMinutes(),
 			h = d.getHours();
-		
+
 		allOff();
-		
+
 		if ( isEarthHour( d ) ) return;
-		
+
 		showTextMinutes( m );
-		showDotMinutes( m );    
+		showDotMinutes( m );
 		showPastTo( m );
 		showHours( h, m );
 	}
@@ -151,13 +151,13 @@ var qlock5 = ( function ( doc ) {
 	 * @param  {number} m minutes of current time
 	 */
 	function showHours( h, m ) {
-		container.dataset.hours = hours24to12( h );
+		container.setAttribute( 'data-hours', '' + hours24to12( h ) );
 
-		if ( m > 34 ) h ++;    
+		if ( m > 34 ) h ++;
 		h = hours24to12( h );
 		show( 'h' + h );
 	}
-	
+
 	/**
 	 * convert 0 - 23:59 time to 12:00 - 11:59
 	 * @param  {number} h hours
@@ -176,7 +176,7 @@ var qlock5 = ( function ( doc ) {
 			doc.getElementById( id ).className = 'on';
 		});
 	}
-	
+
 	/**
 	 * clears clock by removing .on class from all elements
 	 */
@@ -186,7 +186,7 @@ var qlock5 = ( function ( doc ) {
 			els[ i ].className = '';
 		}
 	}
-	
+
 	/**
 	 * Checks if it is Earth Hour
 	 * @param  {date}  d current date
@@ -195,14 +195,14 @@ var qlock5 = ( function ( doc ) {
 	function isEarthHour ( d ) {
 		var start = new Date('Sat Mar 30 2013 20:30:00'),
 			end = new Date('Sat Mar 30 2013 21:30:00');
-			
+
 		if ( d > start && d < end ) {
 			document.title = 'turned off for Earth Hour';
 			return true;
 		}
 		return false;
 	}
-	
+
 	init();
-	
+
 })( document );
