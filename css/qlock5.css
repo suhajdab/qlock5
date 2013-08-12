@@ -22,30 +22,21 @@ body {
 	background: #fff;
 	font-family: 'NotCourierSansRegular';
 	
-	display: -ms-box;
-	-ms-box-orient: vertical;
-	-ms-box-pack: center;
-	-ms-box-align: center;
+	display: -webkit-box;   /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+	display: -moz-box;      /* OLD: Firefox (buggy) */ 
+	display: -ms-flexbox;   /* MID: IE 10 */
+	display: -webkit-flex;  /* NEW, Chrome 21+ */
+	display: flex;          /* NEW: Opera 12.1, Firefox 22+ */
 
-	display: -moz-box;
-	-moz-box-orient: vertical;
-	-moz-box-pack: center;
-	-moz-box-align: center;
+	-webkit-box-align: center; -moz-box-align: center; /* OLD… */
+	-ms-flex-align: center; /* You know the drill now… */
+	-webkit-align-items: center;
+	align-items: center;
 
-	display: -o-box;
-	-o-box-orient: vertical;
-	-o-box-pack: center;
-	-o-box-align: center;
-
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-box-pack: center;
-	-webkit-box-align: center;
-
-	display: box;
-	box-orient: vertical;
-	box-pack: center;
-	box-align: center;
+	-webkit-box-pack: center; -moz-box-pack: center; 
+	-ms-flex-pack: center; 
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 
 footer {
