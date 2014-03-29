@@ -193,8 +193,8 @@ var qlock5 = ( function ( doc ) {
 	 * @return {Boolean}   is it earth hour?
 	 */
 	function isEarthHour ( d ) {
-		var start = new Date('Sat Mar 30 2013 20:30:00'),
-			end = new Date('Sat Mar 30 2013 21:30:00');
+		var start = new Date('Sat Mar 29 2014 20:30:00'),
+			end = new Date('Sat Mar 29 2014 21:30:00');
 
 		if ( d > start && d < end ) {
 			document.title = 'turned off for Earth Hour';
