@@ -14,11 +14,22 @@
 
 
 var qlock5 = ( function ( doc ) {
-	'use strict'
+	'use strict';
 
-	var time, container;
+	var container;
 
-	var panelString = 'IT:it L IS:is ASTIME A:a C QUARTER:m15 DC TWENTY:m20 FIVE:m5 X HALF:m30 B TEN:m10 F TO:to PAST:past ERU NINE:h9 ONE:h1 SIX:h6 THREE:h3 FOUR:h4 FIVE:h5 TWO:h2 EIGHT:h8 ELEVEN:h11 SEVEN:h7 TWELVE:h12 TEN:h10 SE OCLOCK:oclock &bull;:m1 &bull;:m2 &bull;:m3 &bull;:m4';
+	var panelString =
+		"IT:it L IS:is ASTIME \n"
+	+   "A:a C QUARTER:m15 DC \n"
+	+   "TWENTY:m20 FIVE:m5 X \n"
+	+   "HALF:m30 B TEN:m10 F TO:to \n"
+	+   "PAST:past ERU NINE:h9 \n"
+	+   "ONE:h1 SIX:h6 THREE:h3 \n"
+	+   "FOUR:h4 FIVE:h5 TWO:h2 \n"
+	+   "EIGHT:h8 ELEVEN:h11 \n"
+	+   "SEVEN:h7 TWELVE:h12 \n"
+	+   "TEN:h10 SE OCLOCK:oclock "
+	+   "&bull;:m1 &bull;:m2 &bull;:m3 &bull;:m4";
 
 	function init () {
 		container = doc.getElementById( 'qlock5' ),
@@ -36,9 +47,9 @@ var qlock5 = ( function ( doc ) {
 	 */
 	function build() {
 		var panels = panelString.split( ' ' ),
-			wrapper = document.createElement( 'div' );
+			wrapper = document.createElement( 'div' ),
+			content = panels.map( process ).join('');
 
-		var content = panels.map( process ).join('');
 		wrapper.innerHTML = content;
 		container.appendChild( wrapper );
 	}
