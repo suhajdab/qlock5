@@ -32,7 +32,7 @@ var qlock5 = ( function ( doc ) {
 	+   "&bull;:m1 &bull;:m2 &bull;:m3 &bull;:m4";
 
 	function init () {
-		container = doc.getElementById( 'qlock5' ),
+		container = doc.getElementById( 'qlock5' );
 
 		build();
 		waitTillFullMinute();
